@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment History - PaseoPay</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <!-- Replace with your logo image -->
+            <a class="navbar-brand" href="index.html">
+                <!-- <img src="images/logo.png" alt="PaseoPay Logo" class="logo"> -->
+                PaseoPay
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="payment-history.html">Payment History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user-profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-history me-2"></i> Payment History
+                    </div>
+                    <div class="card-body">
+                        <!-- Payment Filter -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <select class="form-select" id="paymentTypeFilter">
+                                    <option value="all">All Payment Types</option>
+                                    <option value="amortization">House Amortization</option>
+                                    <option value="hoa">HOA Dues</option>
+                                    <option value="garbage">Garbage Collection</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="dateFilter">
+                                    <option value="all">All Dates</option>
+                                    <option value="thisMonth">This Month</option>
+                                    <option value="lastMonth">Last Month</option>
+                                    <option value="thisYear">This Year</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">From</span>
+                                    <input type="date" class="form-control" id="dateFrom">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">To</span>
+                                    <input type="date" class="form-control" id="dateTo">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Table -->
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Reference No.</th>
+                                        <th>Payment Type</th>
+                                        <th>Amount</th>
+                                        <th>Payment Method</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="paymentHistoryTable">
+                                    <tr>
+                                        <td>Apr 05, 2025</td>
+                                        <td>PRF-12345</td>
+                                        <td>House Amortization</td>
+                                        <td>₱15,000.00</td>
+                                        <td>GCash</td>
+                                        <td><span class="badge bg-success">Success</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary view-receipt" data-ref="PRF-12345">
+                                                <i class="fas fa-receipt"></i> View
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mar 15, 2025</td>
+                                        <td>PRF-12344</td>
+                                        <td>HOA Dues</td>
+                                        <td>₱400.00</td>
+                                        <td>GCash</td>
+                                        <td><span class="badge bg-success">Success</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary view-receipt" data-ref="PRF-12344">
+                                                <i class="fas fa-receipt"></i> View
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mar 05, 2025</td>
+                                        <td>PRF-12343</td>
+                                        <td>House Amortization</td>
+                                        <td>₱15,000.00</td>
+                                        <td>GCash</td>
+                                        <td><span class="badge bg-success">Success</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary view-receipt" data-ref="PRF-12343">
+                                                <i class="fas fa-receipt"></i> View
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feb 20, 2025</td>
+                                        <td>PRF-12342</td>
+                                        <td>Garbage Collection</td>
+                                        <td>₱200.00</td>
+                                        <td>GCash</td>
+                                        <td><span class="badge bg-success">Success</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary view-receipt" data-ref="PRF-12342">
+                                                <i class="fas fa-receipt"></i> View
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feb 15, 2025</td>
+                                        <td>PRF-12341</td>
+                                        <td>HOA Dues</td>
+                                        <td>₱400.00</td>
+                                        <td>GCash</td>
+                                        <td><span class="badge bg-success">Success</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary view-receipt" data-ref="PRF-12341">
+                                                <i class="fas fa-receipt"></i> View
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav aria-label="Payment history pagination">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="modal fade" id="receiptModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Payment Receipt</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="receipt-container">
+                        <div class="text-center mb-4">
+                            <!-- <img src="images/logo.png" alt="PaseoPay Logo" class="receipt-logo"> -->
+                            <h4>PaseoPay</h4>
+                            <p>Paseo De San Roque Village</p>
+                        </div>
+                        <div class="receipt-details">
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Reference Number:</div>
+                                <div class="col-7" id="modalRefNumber">PRF-12345</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Date & Time:</div>
+                                <div class="col-7" id="modalDateTime">Apr 05, 2025, 10:23 AM</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Payment Type:</div>
+                                <div class="col-7" id="modalPaymentType">House Amortization</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Amount:</div>
+                                <div class="col-7" id="modalAmount">₱15,000.00</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Payment Method:</div>
+                                <div class="col-7" id="modalPaymentMethod">GCash</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Status:</div>
+                                <div class="col-7" id="modalStatus"><span class="badge bg-success">Success</span></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Homeowner:</div>
+                                <div class="col-7" id="modalHomeowner">John Doe</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 fw-bold">Property:</div>
+                                <div class="col-7" id="modalProperty">Block 10, Lot 5, Phase 2</div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <p class="small text-muted">This serves as your official receipt.</p>
+                            <p class="small text-muted">Thank you for your payment!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="downloadModalReceipt">Download Receipt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>PaseoPay</h5>
+                    <p>Paseo de San Roque Village Online Payment System</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="payment-history.html" class="text-white">Payment History</a></li>
+                        <li><a href="user-profile.html" class="text-white">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> 0968-741-3553</li>
+                        <li><i class="fas fa-envelope me-2"></i> support@paseopay.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 PaseoPay. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

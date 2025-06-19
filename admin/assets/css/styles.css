@@ -1,0 +1,245 @@
+/* Main styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Sidebar styles */
+#sidebar {
+    background-color: #023660;
+    min-height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar .nav-link {
+    color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#sidebar .nav-link:hover {
+    background-color: #01101c;
+}
+
+#sidebar .nav-link.active {
+    background-color: #e3f2fd;
+    color: #023660;
+    font-weight: bold;
+}
+
+/* Content area */
+main {
+    padding: 20px;
+}
+
+.content-page {
+    display: none;
+}
+
+.content-page.active {
+    display: block;
+}
+
+/* Card styling */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Tables */
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* Border left cards on dashboard */
+.border-left-primary {
+    border-left: 4px solid #0014c3;
+}
+
+.border-left-success {
+    border-left: 4px solid #2e7d32;
+}
+
+.border-left-warning {
+    border-left: 4px solid #7d00ab;
+}
+
+.border-left-danger {
+    border-left: 4px solid #dc0416;
+}
+
+.border-left-secondary {
+    border-left: 4px solid #00fa4b;
+}
+
+/* Responsive fixes */
+@media (max-width: 767.98px) {
+    #sidebar {
+        position: static;
+        height: auto;
+        min-height: auto;
+        padding-bottom: 20px;
+    }
+    
+    main {
+        margin-left: 0;
+    }
+}
+
+/* Form elements */
+.form-control:focus, .btn:focus {
+    box-shadow: 0 0 0 0.25rem rgba(100, 181, 246, 0.25);
+    border-color: #64b5f6;
+}
+
+/* Custom button styling */
+.btn-primary {
+    background-color: #0014c3;
+    border-color: #0014c3;
+}
+
+.btn-primary:hover {
+    background-color: #007af4;
+    border-color: #007af4;
+}
+
+.btn-danger {
+    background-color: #dc0416;
+    border-color: #dc0416;
+}
+
+.btn-success {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.btn-warning {
+    background-color: #7d00ab !important;
+    color: #fff;
+    border-color: #7d00ab;
+}
+
+.btn-secondary {
+    background-color: #2e7d32 !important;
+    border-color: #2e7d32;
+}
+
+/* Modal styling */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Badges */
+.badge.bg-success {
+    background-color: #2e7d32 !important;
+    border-radius: 0 !important;
+}
+
+.badge.bg-warning {
+    background-color: #7d00ab !important;
+    border-radius: 0 !important;
+    color: #fff;
+}
+
+.badge.bg-danger {
+    background-color: #dc0416 !important;
+    border-radius: 0 !important;
+}
+
+.badge.bg-info {
+    background-color: #0014c3 !important;
+    border-radius: 0 !important;
+}
+
+.badge.bg-primary {
+    background-color: #023660 !important;
+    border-radius: 0 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #2e7d32 !important;
+    border-radius: 0 !important;
+}
+
+.badge.bg-dark {
+    background-color: #023660 !important;
+    border-radius: 0 !important;
+}
+
+/* Text Style */
+.text-warning {
+    color: #7d00ab !important;
+}
+
+.text-success {
+    color: #2e7d32 !important;
+}
+
+.text-primary {
+    color: #0014c3 !important;
+}
+
+.text-danger {
+    color: #dc0416 !important;
+}
+
+.text-secondary {
+    color: #37a758 !important;
+}   
+
+/*cards Styles*/
+.stat-number {
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.stat-number2 {
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.icon-large {
+    font-size: 2rem;
+}
+
+.icon-large2 {
+    font-size: 1.5rem;
+}
+
+/* Search box */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.bg-warning {
+    background-color: #7d00ab !important;
+}

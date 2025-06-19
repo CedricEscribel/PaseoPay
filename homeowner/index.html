@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaseoPay - Homeowner Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <!-- Replace with your logo image -->
+            <a class="navbar-brand" href="index.html">
+                <!-- <img src="images/logo.png" alt="PaseoPay Logo" class="logo"> -->
+                PaseoPay
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="payment-history.html">Payment History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user-profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Welcome Message -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Welcome, <span id="homeownerName">Darryl Eangelista</span>!</h4>
+                        <p>Property: Block <span id="homeownerBlock">15</span>, Lot <span id="homeownerLot">26</span>, Phase <span id="homeownerPhase">2</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Announcements -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <i class="fas fa-bullhorn me-2"></i> Announcements
+                    </div>
+                    <div class="card-body">
+                        <div id="announcementsList">
+                            <div class="announcement-item">
+                                <h5>General Meeting</h5>
+                                <p class="text-muted">Posted on: April 1, 2025</p>
+                                <p>Join us for our General Meeting on April 15, 2025. Please assemble at the village Club House by 5:00 PM.</p>
+                            </div>
+                            <hr>
+                            <div class="announcement-item">
+                                <h5>HOA Fee Adjustment</h5>
+                                <p class="text-muted">Posted on: March 25, 2025</p>
+                                <p>Starting May 1, 2025, the HOA dues will be adjusted to ₱1,200 per month to cover increasing maintenance costs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notifications -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <i class="fas fa-bell me-2"></i> Recent Notifications
+                    </div>
+                    <div class="card-body">
+                        <div id="notificationsList">
+                            <div class="notification-item">
+                                <p><i class="fas fa-exclamation-circle text-danger me-2"></i> <strong>Overdue Payment:</strong> Your garbage collection fee for March 2025 is overdue.</p>
+                                <p class="text-muted small">April 5, 2025</p>
+                            </div>
+                            <hr>
+                            <div class="notification-item">
+                                <p><i class="fas fa-check-circle text-success me-2"></i> <strong>Payment Confirmed:</strong> Your HOA dues payment of ₱400 has been received.</p>
+                                <p class="text-muted small">March 10, 2025</p>
+                            </div>
+                            <hr>
+                            <div class="notification-item">
+                                <p><i class="fas fa-info-circle text-info me-2"></i> <strong>Reminder:</strong> House amortization payment due in 10 days.</p>
+                                <p class="text-muted small">April 5, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <!-- Payment Options -->
+        <div class="row">
+            <!-- House Amortization -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-home me-2"></i> House Amortization
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Monthly Payment: ₱<span id="amortizationAmount">15,000</span></h5>
+                        <p class="card-text">Next Due Date: <span id="amortizationDueDate">April 15, 2025</span></p>
+                        <p class="card-text">Remaining Balance: ₱<span id="amortizationBalance">1,250,000</span></p>
+                        <p class="card-text">Remaining Months: <span id="remainingMonths">104</span></p>
+                        <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#paymentModal" data-payment-type="amortization">Pay Now</button>
+                        <a href="amortization-details.html" class="btn btn-outline-primary mt-2">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOA Dues -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <i class="fas fa-building me-2"></i> HOA Dues
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Monthly Fee: ₱<span id="hoaAmount">400</span></h5>
+                        <p class="card-text">Next Due Date: <span id="hoaDueDate">April 10, 2025</span></p>
+                        <p class="card-text">Status: <span id="hoaStatus" class="badge bg-success">Paid</span></p>
+                        <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#paymentModal" data-payment-type="hoa">Pay Now</button>
+                        <a href="hoa-details.html" class="btn btn-outline-success mt-2">View History</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Garbage Collection -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <i class="fas fa-trash-alt me-2"></i> Garbage Collection
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Monthly Fee: ₱<span id="garbageAmount">200</span></h5>
+                        <p class="card-text">Next Due Date: <span id="garbageDueDate">April 5, 2025</span></p>
+                        <p class="card-text">Status: <span id="garbageStatus" class="badge bg-danger">Overdue</span></p>
+                        <button class="btn btn-warning mt-2" data-bs-toggle="modal" data-bs-target="#paymentModal" data-payment-type="garbage">Pay Now</button>
+                        <a href="garbage-details.html" class="btn btn-outline-warning mt-2">View History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Make Payment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="mb-3">
+                            <label for="paymentType" class="form-label">Payment Type</label>
+                            <input type="text" class="form-control" id="paymentType" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentAmount" class="form-label">Amount (₱)</label>
+                            <input type="number" class="form-control" id="paymentAmount" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Payment Method</label>
+                            <div class="d-flex justify-content-around payment-methods">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gcash" value="gcash" checked>
+                                    <label class="form-check-label" for="gcash">
+                                        <img src="images/gcash.png" alt="GCash" class="payment-icon">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirmPayment">Confirm Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Confirmation Modal -->
+    <div class="modal fade" id="paymentConfirmationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Payment Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle text-success confirmation-icon"></i>
+                        <h4>Payment Successful!</h4>
+                    </div>
+                    <div class="receipt-details">
+                        <p><strong>Reference Number:</strong> <span id="receiptReference"></span></p>
+                        <p><strong>Payment Type:</strong> <span id="receiptType"></span></p>
+                        <p><strong>Amount:</strong> ₱<span id="receiptAmount"></span></p>
+                        <p><strong>Date & Time:</strong> <span id="receiptDateTime"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="downloadReceipt">Download Receipt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>PaseoPay</h5>
+                    <p>Paseo de San Roque Village Online Payment System</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="payment-history.html" class="text-white">Payment History</a></li>
+                        <li><a href="user-profile.html" class="text-white">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> 0968-741-3553</li>
+                        <li><i class="fas fa-envelope me-2"></i> support@paseopay.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 PaseoPay. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

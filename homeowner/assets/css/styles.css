@@ -1,0 +1,25 @@
+
+.navbar-dark.bg-primary {
+  background-color: #023660 !important;
+}
+
+.card-header.bg-info {
+  background-color: #023660 !important;
+  color: #fff !important;
+}
+
+.card-header.bg-warning {
+  background-color: #7d00ab !important;
+  color: #fff !important;
+}
+
+.btn.btn-warning {
+  background-color: #7d00ab !important;
+  border-color: #7d00ab !important;
+  color: #fff !important;
+}
+
+.btn.btn-outline-warning {
+  color: #7d00ab;
+  border-color: #7d00ab !important;
+}
