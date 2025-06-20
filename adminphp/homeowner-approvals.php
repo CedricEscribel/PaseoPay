@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Section -->
+<?php include './pages/head.php' ?>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <?php include './pages/navigation.php' ?>
+
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Homeowner Approvals</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-primary" id="approve-all-btn">
+                                <i class="bi bi-check-all me-1"></i>Approve All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-left-warning h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <div class="h6 mb-0 font-weight-bold text-warning">Pending Approval</div>
+                                        <div class="h3 mt-2 stat-number2" id="pending-stat">3</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-clock-history icon-large2 text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-left-success h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <div class="h6 mb-0 font-weight-bold text-success">Approved Today</div>
+                                        <div class="h3 mt-2 stat-number2" id="approved-today-stat">2</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-check-circle icon-large2 text-success"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-left-primary h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <div class="h6 mb-0 font-weight-bold text-primary">Total This Month</div>
+                                        <div class="h3 mt-2 stat-number2" id="month-total-stat">12</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-calendar-month icon-large2 text-primary"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-left-danger h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <div class="h6 mb-0 font-weight-bold text-danger">Rejected</div>
+                                        <div class="h3 mt-2 stat-number2" id="rejected-stat">1</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-x-circle icon-large2 text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter and Search -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="bi bi-person-check me-1"></i>
+                                Pending Homeowner Registrations
+                            </div>
+                            <div class="d-flex gap-2">
+                                <select class="form-select form-select-sm" id="status-filter" style="width: auto;">
+                                    <option value="all">All Status</option>
+                                    <option value="pending" selected>Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                                <select class="form-select form-select-sm" id="phase-filter" style="width: auto;">
+                                    <option value="all">All Phases</option>
+                                    <option value="Phase 1">Phase 1</option>
+                                    <option value="Phase 2">Phase 2</option>
+                                    <option value="Phase 3">Phase 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search by name, email, block/lot..." id="search-input">
+                                <button class="btn btn-outline-secondary" type="button" id="search-btn">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" id="select-all" class="form-check-input">
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Contact Number</th>
+                                        <th>Block/Lot</th>
+                                        <th>Phase</th>
+                                        <th>Registration Date</th>
+                                        <th>Documents</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-status="pending">
+                                        <td>
+                                            <input type="checkbox" class="form-check-input row-checkbox">
+                                        </td>
+                                        <td>Carlos Rodriguez</td>
+                                        <td>carlos.rodriguez@email.com</td>
+                                        <td>09123456789</td>
+                                        <td>Block 4, Lot 15</td>
+                                        <td>Phase 2</td>
+                                        <td>Dec 5, 2024</td>
+                                        <td>
+                                            <span class="badge bg-success">Complete</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning">Pending</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#approvalModal" data-action="view">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-success" data-action="approve">
+                                                    <i class="bi bi-check"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" data-action="reject">
+                                                    <i class="bi bi-x"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="pending">
+                                        <td>
+                                            <input type="checkbox" class="form-check-input row-checkbox">
+                                        </td>
+                                        <td>Ana Dela Cruz</td>
+                                        <td>ana.delacruz@email.com</td>
+                                        <td>09987654321</td>
+                                        <td>Block 2, Lot 20</td>
+                                        <td>Phase 1</td>
+                                        <td>Dec 3, 2024</td>
+                                        <td>
+                                            <span class="badge bg-danger">Incomplete</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning">Pending</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#approvalModal" data-action="view">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-success" data-action="approve">
+                                                    <i class="bi bi-check"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" data-action="reject">
+                                                    <i class="bi bi-x"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="pending">
+                                        <td>
+                                            <input type="checkbox" class="form-check-input row-checkbox">
+                                        </td>
+                                        <td>Miguel Santos</td>
+                                        <td>miguel.santos@email.com</td>
+                                        <td>09564738291</td>
+                                        <td>Block 3, Lot 8</td>
+                                        <td>Phase 2</td>
+                                        <td>Dec 1, 2024</td>
+                                        <td>
+                                            <span class="badge bg-success">Complete</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning">Pending</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#approvalModal" data-action="view">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-success" data-action="approve">
+                                                    <i class="bi bi-check"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" data-action="reject">
+                                                    <i class="bi bi-x"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="approved" style="display: none;">
+                                        <td>
+                                            <input type="checkbox" class="form-check-input row-checkbox">
+                                        </td>
+                                        <td>Lisa Chen</td>
+                                        <td>lisa.chen@email.com</td>
+                                        <td>09123987456</td>
+                                        <td>Block 1, Lot 12</td>
+                                        <td>Phase 1</td>
+                                        <td>Nov 28, 2024</td>
+                                        <td>
+                                            <span class="badge bg-success">Complete</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-success">Approved</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#approvalModal" data-action="view">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-secondary">
+                                                    <i class="bi bi-check"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-secondary">
+                                                    <i class="bi bi-x"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-status="rejected" style="display: none;">
+                                        <td>
+                                            <input type="checkbox" class="form-check-input row-checkbox">
+                                        </td>
+                                        <td>John Invalid</td>
+                                        <td>john.invalid@email.com</td>
+                                        <td>09999999999</td>
+                                        <td>Block 5, Lot 1</td>
+                                        <td>Phase 3</td>
+                                        <td>Nov 25, 2024</td>
+                                        <td>
+                                            <span class="badge bg-danger">Invalid</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-danger">Rejected</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#approvalModal" data-action="view">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-secondary">
+                                                    <i class="bi bi-check"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-secondary">
+                                                    <i class="bi bi-x"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Approval Detail Modal -->
+    <div class="modal fade" id="approvalModal" tabindex="-1" aria-labelledby="approvalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="approvalModalLabel">Homeowner Registration Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Personal Information</h6>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Full Name:</strong></label>
+                                <p id="modal-name">Carlos Rodriguez</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Email:</strong></label>
+                                <p id="modal-email">carlos.rodriguez@email.com</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Contact Number:</strong></label>
+                                <p id="modal-phone">09123456789</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Registration Date:</strong></label>
+                                <p id="modal-reg-date">Dec 5, 2024</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Property Information</h6>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Block/Lot:</strong></label>
+                                <p id="modal-block-lot">Block 4, Lot 15</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Phase:</strong></label>
+                                <p id="modal-phase">Phase 2</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h6>Submitted Documents</h6>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="list-group" id="documents-list">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                        <strong>Valid ID (Government Issued)</strong>
+                                        <div class="small text-muted">Uploaded: Dec 5, 2024</div>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success me-2">Verified</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-eye"></i> View
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                        <strong>Proof of Property Ownership</strong>
+                                        <div class="small text-muted">Uploaded: Dec 5, 2024</div>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success me-2">Verified</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-eye"></i> View
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                        <strong>Proof of Billing Address</strong>
+                                        <div class="small text-muted">Uploaded: Dec 5, 2024</div>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success me-2">Verified</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-eye"></i> View
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h6>Admin Notes</h6>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="admin-notes" rows="3" placeholder="Add notes about this application..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="modal-reject-btn">
+                        <i class="bi bi-x me-1"></i>Reject Application
+                    </button>
+                    <button type="button" class="btn btn-success" id="modal-approve-btn">
+                        <i class="bi bi-check me-1"></i>Approve Application
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rejection Reason Modal -->
+    <div class="modal fade" id="rejectionModal" tabindex="-1" aria-labelledby="rejectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectionModalLabel">Reject Application</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="rejection-reason" class="form-label">Reason for Rejection</label>
+                        <select class="form-select" id="rejection-reason">
+                            <option value="">Select a reason...</option>
+                            <option value="incomplete-documents">Incomplete Documents</option>
+                            <option value="invalid-documents">Invalid Documents</option>
+                            <option value="property-not-found">Property Not Found</option>
+                            <option value="duplicate-application">Duplicate Application</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rejection-details" class="form-label">Additional Details</label>
+                        <textarea class="form-control" id="rejection-details" rows="3" placeholder="Provide additional details about the rejection..."></textarea>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notify-applicant">
+                        <label class="form-check-label" for="notify-applicant">
+                            Send email notification to applicant
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirm-reject-btn">
+                        <i class="bi bi-x me-1"></i>Confirm Rejection
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/homeowner-approvals.js"></script>
+</body>
+
+</html>
