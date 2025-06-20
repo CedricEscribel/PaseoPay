@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+<?php $pageTitle = "Reports"; ?>
 <!-- Head Section -->
 <?php include './pages/head.php' ?>
 

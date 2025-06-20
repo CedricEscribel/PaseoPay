@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php $pageTitle = "Homeowners"; ?>
 <!-- Head Section -->
 <?php include './pages/head.php' ?>
 

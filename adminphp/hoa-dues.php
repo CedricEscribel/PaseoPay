@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php $pageTitle = "HOE Dues"; ?>
 <!-- Head Section -->
 <?php include './pages/head.php' ?>
 

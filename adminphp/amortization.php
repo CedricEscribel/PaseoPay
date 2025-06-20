@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <!-- Head Section -->
+<?php $pageTitle = "Amortization"; ?>
 <?php include './pages/head.php' ?>
 
 <body>
@@ -177,11 +179,10 @@
                 <tr>
                   <th>Month</th>
                   <th>Date</th>
-                  <th>Beginning Balance</th>
                   <th>Payment</th>
                   <th>Interest</th>
                   <th>Principal</th>
-                  <th>Ending Balance</th>
+                  <th>Remaining Balance</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -189,7 +190,6 @@
                 <tr>
                   <td>1</td>
                   <td>Jan 1, 2025</td>
-                  <td>₱1,500,000</td>
                   <td>₱7,500</td>
                   <td>₱7,500</td>
                   <td>₱0</td>
@@ -199,7 +199,6 @@
                 <tr>
                   <td>2</td>
                   <td>Feb 1, 2025</td>
-                  <td>₱1,500,000</td>
                   <td>₱7,500</td>
                   <td>₱7,500</td>
                   <td>₱0</td>
@@ -209,7 +208,6 @@
                 <tr>
                   <td>3</td>
                   <td>Mar 1, 2025</td>
-                  <td>₱1,500,000</td>
                   <td>₱7,500</td>
                   <td>₱7,500</td>
                   <td>₱0</td>
@@ -219,7 +217,6 @@
                 <tr>
                   <td>4</td>
                   <td>Apr 1, 2025</td>
-                  <td>₱1,500,000</td>
                   <td>₱7,500</td>
                   <td>₱7,500</td>
                   <td>₱0</td>
@@ -229,7 +226,6 @@
                 <tr>
                   <td>5</td>
                   <td>May 1, 2025</td>
-                  <td>₱1,500,000</td>
                   <td>₱7,500</td>
                   <td>₱7,500</td>
                   <td>₱0</td>
